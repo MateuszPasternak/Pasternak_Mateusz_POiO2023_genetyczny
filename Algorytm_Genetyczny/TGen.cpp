@@ -78,7 +78,9 @@ void TGen::info()
 		"\n++ - step value: " << this->step <<
 		"\n++" <<
 		"\n++ - Present value: " << this->val <<
-		"\n++ - Present val_id: " << this->_id;
+		"\n++ - Present val_id: " << this->_id <<
+		"\n###########################\n" <<
+		opis << "\n###########################\n\n";
 }
 
 int TGen::get_id(std::vector<double> values, double value)
