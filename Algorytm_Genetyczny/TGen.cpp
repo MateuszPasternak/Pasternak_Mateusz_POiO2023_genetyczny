@@ -124,3 +124,8 @@ int TGen::find_closest(std::vector<double> values, double value)
 
 	return pos;
 }
+
+double TGen::get_val()
+{
+	return this->val;
+}
