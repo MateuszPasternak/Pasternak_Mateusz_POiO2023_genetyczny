@@ -128,9 +128,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Algorytm_Genetyczny.cpp" />
+    <ClCompile Include="TCandidate.cpp" />
     <ClCompile Include="TGen.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="TCandidate.h" />
     <ClInclude Include="TGen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

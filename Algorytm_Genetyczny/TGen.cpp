@@ -31,9 +31,9 @@ void TGen::set_value(double value)
 
 	//std::cout << "\n\n" << val << "\n" << length << std::endl;
 
-	for (size_t i = this->min; i <= this->max; i+=this->step)
+	for (size_t i = 0; i < length; i++)
 	{
-		values.push_back(i);
+		values.push_back(this->min + i*this->step);
 		//std::cout << "\n" << i << "\n";
 	}
 
@@ -80,7 +80,7 @@ void TGen::info()
 		"\n++ - Present value: " << this->val <<
 		"\n++ - Present val_id: " << this->_id <<
 		"\n###########################\n" <<
-		opis << "\n###########################\n\n";
+		this->opis << "\n###########################\n\n";
 }
 
 int TGen::get_id(std::vector<double> values, double value)

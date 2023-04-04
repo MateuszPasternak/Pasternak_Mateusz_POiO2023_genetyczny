@@ -7,8 +7,8 @@ class TGen
 {
 	std::string name, opis;
 	double min = 0 , max = 0, step = 0;
-	double val = 0;
-	int _id = 0;
+	volatile double val = 0;
+	volatile int _id = 0;
 
 public:
 	TGen(double min, double max, double step, std::string name, std::string opis="Gen");
