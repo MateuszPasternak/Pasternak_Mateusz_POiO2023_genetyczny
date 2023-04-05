@@ -17,7 +17,12 @@ public:
 	void set_value(double value);
 	void info();
 	int get_id(std::vector<double> values, double value);
+	int get_val_id();
 	int find_closest(std::vector<double> values, double value);
 	double get_val();
+	void set_description();
+	void set_name();
+	std::string get_description();
+	std::string get_name();
 };
 

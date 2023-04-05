@@ -105,6 +105,11 @@ int TGen::get_id(std::vector<double> values, double value)
 	return id;
 }
 
+int TGen::get_val_id()
+{
+	return this->_id;
+}
+
 int TGen::find_closest(std::vector<double> values, double value)
 {
 	int pos;
@@ -128,4 +133,28 @@ int TGen::find_closest(std::vector<double> values, double value)
 double TGen::get_val()
 {
 	return this->val;
+}
+
+void TGen::set_description()
+{
+	std::cout << "\n++ Give the description for the chosen gen:\n";
+	getline(std::cin, this->opis);
+	std::cout << "\n++ Opis that you have set is: \n" << this->opis << std::endl;
+}
+
+void TGen::set_name()
+{
+	std::cout << "\n++ Give the name for the chosen gen:\n";
+	std::cin >> this->name;
+	std::cout << "\n++ Name that you have set is: \n" << this->name << std::endl;
+}
+
+std::string TGen::get_description()
+{
+	return this->opis;
+}
+
+std::string TGen::get_name()
+{
+	return this->name;
 }

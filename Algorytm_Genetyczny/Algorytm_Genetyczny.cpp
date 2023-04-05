@@ -8,7 +8,10 @@
 int main()
 {
     /*TGen param1{1, 4, 0.5 ,"Gen1"};
-    TGen param2{ 0, 25, 1, 5, "Gen2", "Gen2 - zabawa genami - doktor zlo w akcji" };
+    param1.set_description();
+    param1.info();
+    std::cout << "\nName of this gene is: " << param1.get_name() <<std::endl;*/
+    /*TGen param2{0, 25, 1, 5, "Gen2", "Gen2 - zabawa genami - doktor zlo w akcji"};
 
     //param1.info();
     param1.set_value(2.75);
