@@ -1,7 +1,6 @@
 #include "TCandidate.h"
 #include <vector>
 #include <iostream>
-#include <ctime>
 #include <random>
 
 TCandidate::TCandidate()
@@ -12,9 +11,7 @@ TCandidate::TCandidate()
 
 void TCandidate::rand_gens_val()
 {
-	srand(time(NULL));
-
-	for (size_t i = 0; i < 2; i++)
+	for (size_t i = 0; i < GENS_NUM; i++)
 	{
 		int min_i = rand() % 100;
 		int max_i = min_i + rand() % 10000 +1;
@@ -42,11 +39,23 @@ void TCandidate::rand_gens_val()
 
 void TCandidate::rate()
 {
-	this->ocena = 2;
+	this->ocena = 0;
 
 	for (size_t i = 0; i < this->genotyp.size(); i++)
 	{
-		this->ocena += genotyp[i].get_val();
+		if (i == 0)
+		{
+			this->ocena += 10 * genotyp[i].get_val();
+		}
+		else
+		{
+			this->ocena += genotyp[i].get_val();
+		}
+	}
+
+	if (ocena)
+	{
+		this->ocena = 1 / this->ocena;
 	}
 }
 
@@ -68,4 +77,9 @@ void TCandidate::info()
 	{
 		genotyp[i].info();
 	}
+}
+
+double TCandidate::get_rate()
+{
+	return ocena;
 }

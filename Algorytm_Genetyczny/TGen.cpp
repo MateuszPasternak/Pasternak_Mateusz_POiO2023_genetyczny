@@ -112,7 +112,7 @@ int TGen::get_val_id()
 
 int TGen::find_closest(std::vector<double> values, double value)
 {
-	int pos;
+	int pos = 0;
 	double buff = values[values.size()-1], dist;
 
 	for (size_t i = 0; i < values.size(); i++)

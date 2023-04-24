@@ -2,11 +2,15 @@
 //
 
 #include <iostream>
+#include <ctime>
 #include "TGen.h"
 #include "TCandidate.h"
+#include "TPopulation.h"
+#include "TAlgorithm.h"
 
 int main()
 {
+    srand(time(NULL));
     /*TGen param1{1, 4, 0.5 ,"Gen1"};
     param1.set_description();
     param1.info();
@@ -19,7 +23,22 @@ int main()
 
     param2.info();*/
 
-    TCandidate cand1{};
-    cand1.rate();
-    cand1.info();
+    //TCandidate cand1{};
+    //cand1.rate();
+    //cand1.info();
+
+    /*TPopulation pop{10};
+    TPopulation pop2{ 20 };
+    pop.info();
+    std::cout << "\n\n";
+    pop.calculate();
+    pop.info();
+    std::cout << "\n\n";
+    std::cout << "BEST CANDIDATE";
+    pop.best_candidate().info();
+
+    pop2.info();*/
+
+    TAlgorithm alg1(5,50,4);
+    alg1.alg();
 }
