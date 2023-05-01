@@ -1,7 +1,7 @@
 #include <iostream>
 #include "TPopulation.h"
 
-unsigned int TPopulation::candidates_count = 0;
+unsigned int TPopulation::pop_count = 0;
 
 TPopulation::TPopulation(int cand_num)
 {
@@ -14,8 +14,8 @@ TPopulation::TPopulation(int cand_num)
 	best_val = 0;
 	best_id = 0;
 
-	this->_id = TPopulation::candidates_count;
-	TPopulation::candidates_count++;
+	this->_id = TPopulation::pop_count;
+	TPopulation::pop_count++;
 	calculate();
 }
 
@@ -45,7 +45,7 @@ TCandidate TPopulation::best_candidate()
 
 void TPopulation::info()
 {
-	std::cout << "####### POPUlATION " << _id + 1 << "/" << candidates_count << "#######\n";
+	std::cout << "####### POPUlATION " << _id + 1 << "/" << pop_count << "#######\n";
 	for (size_t i = 0; i < this->candidates.size(); i++)
 	{
 		std::cout << "++ candidate#" << i << ":\t" << this->candidates[i].get_rate() <<std::endl;
