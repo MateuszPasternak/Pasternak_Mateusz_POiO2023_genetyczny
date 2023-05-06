@@ -6,7 +6,7 @@
 TCandidate::TCandidate()
 {
 	this->ocena = 0;
-	rand_gens_val();
+	//rand_gens_val();
 }
 
 void TCandidate::rand_gens_val()

@@ -3,11 +3,15 @@
 
 unsigned int TPopulation::pop_count = 0;
 
-TPopulation::TPopulation(int cand_num)
+TPopulation::TPopulation(int cand_num, bool rand)
 {
 	for (size_t i = 0; i < cand_num; i++)
 	{
 		TCandidate cand;
+		if (rand == true)
+		{
+			cand.rand_gens_val();
+		}	
 		this->candidates.push_back(cand);
 	}
 

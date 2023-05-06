@@ -22,5 +22,6 @@ public:
 
 private:
 	bool is_stopped();
+	void mutate(double mutationPossibility);
 };
 

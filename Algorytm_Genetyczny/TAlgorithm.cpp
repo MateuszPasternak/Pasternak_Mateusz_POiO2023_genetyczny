@@ -3,7 +3,7 @@
 
 TAlgorithm::TAlgorithm(int pop_size, int count, int postep)
 {
-	this->pres_popul = new TPopulation(pop_size);
+	this->pres_popul = new TPopulation(pop_size, true);
 	this->max_pop_count = count;
 	this->postep = postep;
 	this->pop_size = pop_size;
@@ -26,7 +26,7 @@ void TAlgorithm::alg()
 
 		delete this->prev_popul;
 		this->prev_popul = this->pres_popul;
-		this->pres_popul = new TPopulation(this->pop_size);
+		this->pres_popul = new TPopulation(this->pop_size, true);
 		num++;
 	}
 }
@@ -79,4 +79,9 @@ bool TAlgorithm::is_stopped()
 	}
 
 	return bool_stop_pop_max || bool_stop_improvement;
+}
+
+void TAlgorithm::mutate(double mutationPossibility)
+{
+
 }

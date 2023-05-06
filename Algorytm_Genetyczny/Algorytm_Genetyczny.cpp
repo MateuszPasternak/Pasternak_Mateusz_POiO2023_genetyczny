@@ -39,6 +39,6 @@ int main()
 
     pop2.info();*/
 
-    TAlgorithm alg1(5,50,4);
+    TAlgorithm alg1(50,50,8);
     alg1.alg();
 }

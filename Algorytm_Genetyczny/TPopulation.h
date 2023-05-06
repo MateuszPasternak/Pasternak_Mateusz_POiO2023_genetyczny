@@ -13,7 +13,7 @@ class TPopulation
 	std::vector<TCandidate> candidates;
 
 public:
-	TPopulation(int cand_num);
+	TPopulation(int cand_num, bool rand = false);
 
 	void calculate();
 	TCandidate best_candidate();
@@ -22,5 +22,6 @@ public:
 	unsigned int get_id() { return _id; };
 	unsigned int get_pop_count() { return pop_count; };
 	double get_best_val() { return best_val; };
+	double get_best_val_id() { return best_id; };
 };
 
