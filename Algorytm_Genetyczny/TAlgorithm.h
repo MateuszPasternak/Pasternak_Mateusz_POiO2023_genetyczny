@@ -3,7 +3,7 @@
 #include <iostream>
 #include "TPopulation.h"
 
-#define CROSS_OVER_PROBABILITY 0.5
+#define CROSS_OVER_PROBABILITY 0.3
 
 class TAlgorithm
 {

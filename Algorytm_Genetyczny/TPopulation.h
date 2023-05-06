@@ -28,6 +28,7 @@ public:
 	unsigned int get_id() { return _id; };
 	unsigned int get_pop_count() { return pop_count; };
 	unsigned int get_cand_count() { return cand_count; };
+	unsigned int get_cand_MaxCount() { return Max_candidates_num; };
 	double get_best_val() { return best_val; };
 	double get_best_val_id() { return best_id; };
 	std::vector<TCandidate> get_candidatesList() { return candidates; };
