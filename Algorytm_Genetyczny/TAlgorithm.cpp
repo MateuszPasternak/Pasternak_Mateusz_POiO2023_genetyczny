@@ -26,7 +26,8 @@ void TAlgorithm::alg()
 
 		delete this->prev_popul;
 		this->prev_popul = this->pres_popul;
-		this->pres_popul = new TPopulation(this->pop_size, true);
+		this->pres_popul = new TPopulation(this->pop_size);
+		crossOver(0.4);
 		num++;
 	}
 }
@@ -84,4 +85,65 @@ bool TAlgorithm::is_stopped()
 void TAlgorithm::mutate(double mutationPossibility)
 {
 
+}
+
+void TAlgorithm::crossOver(double crossPossibility)
+{
+	std::vector<TCandidate> candidates = this->prev_popul->get_candidatesList();
+	std::vector<TCandidate> crossOver_ParentsList;
+	std::vector<int> crossOver_ParentsIds;
+	std::vector<TCandidate> crossOver_ChildrenList;
+
+	for (int i = 0; i < candidates.size(); i++)
+	{
+		candidates[i].set_CrossPossibilityRate();
+		//std::cout << "\n\nPopulation: " << this->prev_popul->get_id() << std::endl;
+		//candidates[i].info();
+
+		if (candidates[i].get_CrossPossibilityRate() < crossPossibility)
+		{
+			crossOver_ParentsList.push_back(candidates[i]);
+			crossOver_ParentsIds.push_back(i);
+		}
+	}
+
+	//std::cout << "\n\n\n Number of parents: " << crossOver_ParentsList.size() << "\n";
+	if (crossOver_ParentsList.size() > 1)
+	{
+		for (int i = 0; i < crossOver_ParentsList.size(); i++)
+		{
+			int _id = 0;
+			//int crossOverPoint = 1;
+			int crossOverPoint = std::rand() % (GENS_NUM - 1);
+			int gens_count = crossOver_ParentsList[i].get_genotypeOfCand().size();
+
+			do 
+			{
+				_id = std::rand() % crossOver_ParentsList.size();	
+			} while (_id == i);
+
+			//std::cout << " \n\nCross over parent _id: " << crossOver_ParentsIds[_id] << " for parent with id: " << crossOver_ParentsIds[i] << std::endl;
+
+			TCandidate child1, child2;
+			child1.set_gens(candidates[i], candidates[_id], crossOverPoint);
+			child2.set_gens(candidates[_id], candidates[i], crossOverPoint);
+
+			if (this->pres_popul->get_cand_count() >= this->max_pop_count)
+			{
+				return;
+			}
+			else
+			{
+				//this->pres_popul
+			}
+
+			crossOver_ChildrenList.push_back(child1);
+			crossOver_ChildrenList.push_back(child2);
+			/*std::cout << "\n\n CrossOver point : " << crossOverPoint << "\n\n";
+			std::cout << "\n\n Child of parents: " << crossOver_ParentsIds[i] << " and: " << crossOver_ParentsIds[_id] << ": \n";
+			child1.info();
+			std::cout << "\n\n Child of parents: " << crossOver_ParentsIds[_id] << " and: " << crossOver_ParentsIds[i] << ": \n";
+			child2.info();*/
+		}
+	}
 }

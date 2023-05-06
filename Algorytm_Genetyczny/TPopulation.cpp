@@ -15,9 +15,9 @@ TPopulation::TPopulation(int cand_num, bool rand)
 		this->candidates.push_back(cand);
 	}
 
-	best_val = 0;
-	best_id = 0;
-
+	this->best_val = 0;
+	this->best_id = 0;
+	this->cand_count = cand_num;
 	this->_id = TPopulation::pop_count;
 	TPopulation::pop_count++;
 	calculate();

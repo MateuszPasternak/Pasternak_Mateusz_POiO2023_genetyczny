@@ -9,6 +9,8 @@ class TPopulation
 
 	unsigned int best_id = 0;
 	double best_val = 0;
+
+	unsigned int cand_count;
 	
 	std::vector<TCandidate> candidates;
 
@@ -21,7 +23,9 @@ public:
 
 	unsigned int get_id() { return _id; };
 	unsigned int get_pop_count() { return pop_count; };
+	unsigned int get_cand_count() { return cand_count; };
 	double get_best_val() { return best_val; };
 	double get_best_val_id() { return best_id; };
+	std::vector<TCandidate> get_candidatesList() { return candidates; };
 };
 

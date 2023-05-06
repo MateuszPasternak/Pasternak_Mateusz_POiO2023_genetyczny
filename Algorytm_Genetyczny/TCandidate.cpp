@@ -73,13 +73,30 @@ void TCandidate::info()
 	std::cout << "++ rate:" << this->ocena;
 	std::cout << "\n###################################\n";
 
-	for (size_t i = 0; i < this->genotyp.size(); i++)
+	/*for (size_t i = 0; i < this->genotyp.size(); i++)
 	{
 		genotyp[i].info();
-	}
+	}*/
 }
 
 double TCandidate::get_rate()
 {
 	return ocena;
+}
+
+void TCandidate::set_CrossPossibilityRate()
+{
+	this->crossPossibiltyRate = static_cast<float>( std::rand() )/ RAND_MAX;
+}
+
+void TCandidate::set_gens(TCandidate Parent1, TCandidate Parent2, int crossOverPoint)
+{
+	for (int i = 0; i < crossOverPoint; i++)
+	{
+		this->genotyp.push_back(Parent1.genotyp[i]);
+	}
+	for (int i = crossOverPoint; i < GENS_NUM; i++)
+	{
+		this->genotyp.push_back(Parent2.genotyp[i]);
+	}
 }

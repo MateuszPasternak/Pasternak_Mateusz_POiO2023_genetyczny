@@ -23,5 +23,6 @@ public:
 private:
 	bool is_stopped();
 	void mutate(double mutationPossibility);
+	void crossOver(double crossPossibility);
 };
 
