@@ -22,12 +22,13 @@ void TAlgorithm::alg()
 
 	while (!this->is_stopped())
 	{
-		show(num);	
+		//show(num);	
 
 		delete this->prev_popul;
 		this->prev_popul = this->pres_popul;
 		this->pres_popul = new TPopulation(this->pop_size);
-		crossOver(0.4);
+		crossOver(CROSS_OVER_PROBABILITY);
+		this->pres_popul->generate_restOfCandidates();
 		num++;
 	}
 }
@@ -97,8 +98,8 @@ void TAlgorithm::crossOver(double crossPossibility)
 	for (int i = 0; i < candidates.size(); i++)
 	{
 		candidates[i].set_CrossPossibilityRate();
-		//std::cout << "\n\nPopulation: " << this->prev_popul->get_id() << std::endl;
-		//candidates[i].info();
+		std::cout << "\n\nPopulation: " << this->prev_popul->get_id() << std::endl;
+		candidates[i].info();
 
 		if (candidates[i].get_CrossPossibilityRate() < crossPossibility)
 		{
@@ -107,13 +108,12 @@ void TAlgorithm::crossOver(double crossPossibility)
 		}
 	}
 
-	//std::cout << "\n\n\n Number of parents: " << crossOver_ParentsList.size() << "\n";
+	std::cout << "\n\n\n Number of parents: " << crossOver_ParentsList.size() << "\n";
 	if (crossOver_ParentsList.size() > 1)
 	{
 		for (int i = 0; i < crossOver_ParentsList.size(); i++)
 		{
 			int _id = 0;
-			//int crossOverPoint = 1;
 			int crossOverPoint = std::rand() % (GENS_NUM - 1);
 			int gens_count = crossOver_ParentsList[i].get_genotypeOfCand().size();
 
@@ -122,23 +122,28 @@ void TAlgorithm::crossOver(double crossPossibility)
 				_id = std::rand() % crossOver_ParentsList.size();	
 			} while (_id == i);
 
-			//std::cout << " \n\nCross over parent _id: " << crossOver_ParentsIds[_id] << " for parent with id: " << crossOver_ParentsIds[i] << std::endl;
+			std::cout << " \n\nCross over parent _id: " << crossOver_ParentsIds[_id] << " for parent with id: " << crossOver_ParentsIds[i] << std::endl;
+			//candidates[i].info();
+			//candidates[_id].info();
 
 			TCandidate child1, child2;
-			child1.set_gens(candidates[i], candidates[_id], crossOverPoint);
-			child2.set_gens(candidates[_id], candidates[i], crossOverPoint);
+			child1.set_gens(crossOver_ParentsList[i], crossOver_ParentsList[_id], crossOverPoint);
+			child2.set_gens(crossOver_ParentsList[_id], crossOver_ParentsList[i], crossOverPoint);
 
-			if (this->pres_popul->get_cand_count() >= this->max_pop_count)
+			/*if (this->pres_popul->get_cand_count() >= this->max_pop_count)
 			{
 				return;
 			}
-			else
+			else*/
 			{
-				//this->pres_popul
+				this->pres_popul->add_Candidate(child1);
+				this->pres_popul->add_Candidate(child2);
+				this->pres_popul->iterate_candidatesCount(2);
+				
 			}
-
-			crossOver_ChildrenList.push_back(child1);
-			crossOver_ChildrenList.push_back(child2);
+			std::cout << " \n\n cand count: " << this->pres_popul->get_cand_count() << "\n\n";
+			//crossOver_ChildrenList.push_back(child1);
+			//crossOver_ChildrenList.push_back(child2);
 			/*std::cout << "\n\n CrossOver point : " << crossOverPoint << "\n\n";
 			std::cout << "\n\n Child of parents: " << crossOver_ParentsIds[i] << " and: " << crossOver_ParentsIds[_id] << ": \n";
 			child1.info();
@@ -146,4 +151,5 @@ void TAlgorithm::crossOver(double crossPossibility)
 			child2.info();*/
 		}
 	}
+	//std::cout << " \n\n cand count: " << this->pres_popul->get_cand_count() << "\n\n";
 }

@@ -11,6 +11,7 @@ class TPopulation
 	double best_val = 0;
 
 	unsigned int cand_count;
+	unsigned int Max_candidates_num;
 	
 	std::vector<TCandidate> candidates;
 
@@ -20,6 +21,9 @@ public:
 	void calculate();
 	TCandidate best_candidate();
 	void info();
+	void add_Candidate(TCandidate candidateAdded);
+	void generate_restOfCandidates();
+	void iterate_candidatesCount(int times);
 
 	unsigned int get_id() { return _id; };
 	unsigned int get_pop_count() { return pop_count; };
