@@ -8,6 +8,7 @@
 #include "TPopulation.h"
 #include "TAlgorithm.h"
 
+
 int main()
 {
     srand(time(NULL));
@@ -39,6 +40,6 @@ int main()
 
     pop2.info();*/
 
-    TAlgorithm alg1(6,50,4);
+    TAlgorithm alg1(15,50,6);
     alg1.alg();
 }

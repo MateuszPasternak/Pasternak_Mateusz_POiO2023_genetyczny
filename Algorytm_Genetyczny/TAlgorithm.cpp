@@ -22,12 +22,15 @@ void TAlgorithm::alg()
 
 	while (!this->is_stopped())
 	{
-		show(num);	
+		if(this->pres_popul->get_candidatesList().size()!=0)
+			show(num);	
 
 		delete this->prev_popul;
 		this->prev_popul = this->pres_popul;
 		this->pres_popul = new TPopulation(this->pop_size);
+		mutate(MUTATION_POSSIBILITY);
 		crossOver(CROSS_OVER_PROBABILITY);
+		this->pres_popul->generate_restOfCandidates();
 		this->pres_popul->calculate();
 		num++;
 	}
@@ -35,13 +38,13 @@ void TAlgorithm::alg()
 
 void TAlgorithm::show(int num)
 {
-	if (num == this->max_pop_count)
+	if (num == this->max_pop_count || this->blad >= this->postep)
 	{
 		std::cout << "\n\n Best value globally: " << this->_min << std::endl;
 	}
 	else
 	{
-		std::cout << "\n+ Population: " << num + 1 << " \tBest Candidate rate: " << this->pres_popul->best_candidate().get_rate() << std::endl;
+		std::cout << "\n+ Population: " << num << " \tBest Candidate rate: " << this->pres_popul->best_candidate().get_rate() << std::endl;
 	}
 }
 
@@ -68,6 +71,7 @@ bool TAlgorithm::is_stopped()
 		if (population_val > _min)
 		{
 			this->blad++;
+			//std::cout << "\n\nTUTAJ: " << population_val << " BLAD: " << this->blad << "\n\n";
 		}
 		else
 		{
@@ -85,7 +89,25 @@ bool TAlgorithm::is_stopped()
 
 void TAlgorithm::mutate(double mutationPossibility)
 {
+	std::vector<TCandidate> candidates = this->prev_popul->get_candidatesList();
 
+	for (int i = 0; i < candidates.size(); i++)
+	{
+		//candidates[i].set_CrossPossibilityRate(); //¿eby nie mnozyæ funkcji to samo co w krzy¿ówce a nie chce mi siê zmieniaæ nazwy
+
+		//std::cout << "\n\nPopulation: " << this->prev_popul->get_id() << std::endl;
+		//candidates[i].info();
+
+		for (int j = 0; j < candidates[i].get_genotypeOfCand().size(); j++)
+		{
+			candidates[i].get_genotypeOfCand()[j].set_mutationRate();
+
+			if (candidates[i].get_genotypeOfCand()[j].get_mutationRate() < MUTATION_POSSIBILITY)
+			{
+				this->prev_popul->get_candidatesList()[i].get_genotypeOfCand()[j].set_value( !this->prev_popul->get_candidatesList()[i].get_genotypeOfCand()[j].get_val() );
+			}
+		}
+	}
 }
 
 void TAlgorithm::crossOver(double crossPossibility)
@@ -157,5 +179,5 @@ void TAlgorithm::crossOver(double crossPossibility)
 		}
 	}
 	//std::cout << " \n\n cand count: " << this->pres_popul->get_cand_count() << "\n\n";
-	this->pres_popul->generate_restOfCandidates();
+	//this->pres_popul->generate_restOfCandidates();
 }

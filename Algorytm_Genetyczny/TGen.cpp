@@ -158,3 +158,8 @@ std::string TGen::get_name()
 {
 	return this->name;
 }
+
+void TGen::set_mutationRate()
+{
+	this->mutationRate = static_cast<float>(std::rand()) / RAND_MAX;
+}

@@ -9,6 +9,7 @@ class TGen
 	double min = 0 , max = 0, step = 0;
 	volatile double val = 0;
 	volatile int _id = 0;
+	double mutationRate = 0;
 
 public:
 	TGen(double min, double max, double step, std::string name, std::string opis="Gen");
@@ -24,5 +25,7 @@ public:
 	void set_name();
 	std::string get_description();
 	std::string get_name();
+	void set_mutationRate();
+	double get_mutationRate() { return mutationRate; };
 };
 
