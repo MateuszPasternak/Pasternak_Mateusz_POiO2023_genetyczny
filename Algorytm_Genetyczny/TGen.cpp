@@ -59,7 +59,7 @@ void TGen::set_value(double value)
 		}
 		else
 		{
-			int id = find_closest(values, value);
+			int id = find_closest(&values, value);
 			this->val = values[id];
 			this->_id = id;
 			//std::cout << "\n" << id << "\n";
@@ -116,14 +116,16 @@ int TGen::get_val_id()
 	return this->_id;
 }
 
-int TGen::find_closest(std::vector<double> values, double value)
+int TGen::find_closest(std::vector<double>* values, double value)
 {
 	int pos = 0;
-	double buff = values[values.size()-1], dist;
-
-	for (size_t i = 0; i < values.size(); i++)
+	double buff = 1e6, dist;
+	//std::cout << "\n\n#######################################\n buff_val: " << buff
+		//<< "\nVal size: " << values.size()
+		//<< "\n\n#######################################\n\n";
+	for (size_t i = 0; i < ((*values).size()-1); i++)
 	{
-		dist = abs(value - values[i]);
+		dist = abs(value - (*values)[i]);
 
 		if (dist <= buff)
 		{

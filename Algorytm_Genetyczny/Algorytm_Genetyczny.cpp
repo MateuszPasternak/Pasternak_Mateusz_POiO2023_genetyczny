@@ -40,12 +40,15 @@ int main()
     pop.best_candidate().info();
 
     pop2.info();*/
+    
+    for (int i = 0; i < 20; i++)
+    {
+        TAlgorithm alg1(15, 50, 6);
+        alg1.alg();
 
-    TAlgorithm alg1(15,50,6);
-    alg1.alg();
-
-    TCandidateStiffGensCount4 cand1{};
-    cand1.rate();
-    cand1.info();
-
+        TCandidateStiffGensCount4 cand1{};
+        cand1.rate();
+        cand1.info();
+    }
+   
 }

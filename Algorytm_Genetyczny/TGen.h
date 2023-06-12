@@ -20,7 +20,7 @@ public:
 	void info();
 	int get_id(std::vector<double> values, double value);
 	int get_val_id();
-	int find_closest(std::vector<double> values, double value);
+	int find_closest(std::vector<double>* values, double value);
 	double get_val();
 	void set_description();
 	void set_name();
