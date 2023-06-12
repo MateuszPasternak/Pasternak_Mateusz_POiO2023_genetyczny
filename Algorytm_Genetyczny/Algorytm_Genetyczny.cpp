@@ -7,6 +7,7 @@
 #include "TCandidate.h"
 #include "TPopulation.h"
 #include "TAlgorithm.h"
+#include "TCandidateStiffGensCount4.h"
 
 
 int main()
@@ -42,4 +43,9 @@ int main()
 
     TAlgorithm alg1(15,50,6);
     alg1.alg();
+
+    TCandidateStiffGensCount4 cand1{};
+    cand1.rate();
+    cand1.info();
+
 }

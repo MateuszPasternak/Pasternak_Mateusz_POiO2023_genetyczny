@@ -21,7 +21,7 @@ public:
 	void calculate();
 	TCandidate best_candidate();
 	void info();
-	void add_Candidate(TCandidate candidateAdded);
+	void add_Candidate(TCandidate candidateAdded, int id);
 	void generate_restOfCandidates();
 	void iterate_candidatesCount(int times);
 

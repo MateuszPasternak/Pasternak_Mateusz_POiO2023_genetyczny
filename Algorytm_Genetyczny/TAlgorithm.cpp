@@ -27,7 +27,7 @@ void TAlgorithm::alg()
 
 		delete this->prev_popul;
 		this->prev_popul = this->pres_popul;
-		this->pres_popul = new TPopulation(this->pop_size);
+		this->pres_popul = new TPopulation(this->pop_size, true);
 		mutate(MUTATION_POSSIBILITY);
 		crossOver(CROSS_OVER_PROBABILITY);
 		this->pres_popul->generate_restOfCandidates();
@@ -104,7 +104,7 @@ void TAlgorithm::mutate(double mutationPossibility)
 
 			if (candidates[i].get_genotypeOfCand()[j].get_mutationRate() < MUTATION_POSSIBILITY)
 			{
-				this->prev_popul->get_candidatesList()[i].get_genotypeOfCand()[j].set_value( !this->prev_popul->get_candidatesList()[i].get_genotypeOfCand()[j].get_val() );
+				this->pres_popul->get_candidatesList()[i].get_genotypeOfCand()[j].set_value( !this->prev_popul->get_candidatesList()[i].get_genotypeOfCand()[j].get_val() , j);
 			}
 		}
 	}
@@ -163,8 +163,8 @@ void TAlgorithm::crossOver(double crossPossibility)
 			}
 			else
 			{
-				this->pres_popul->add_Candidate(child1);
-				this->pres_popul->add_Candidate(child2);
+				this->pres_popul->add_Candidate(child1,crossOver_ParentsIds[i]);
+				this->pres_popul->add_Candidate(child2, crossOver_ParentsIds[_id]);
 				this->pres_popul->iterate_candidatesCount(2);
 				
 			}

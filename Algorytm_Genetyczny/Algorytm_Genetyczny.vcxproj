@@ -130,12 +130,14 @@
     <ClCompile Include="Algorytm_Genetyczny.cpp" />
     <ClCompile Include="TAlgorithm.cpp" />
     <ClCompile Include="TCandidate.cpp" />
+    <ClCompile Include="TCandidateStiffGensCount4.cpp" />
     <ClCompile Include="TGen.cpp" />
     <ClCompile Include="TPopulation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TAlgorithm.h" />
     <ClInclude Include="TCandidate.h" />
+    <ClInclude Include="TCandidateStiffGensCount4.h" />
     <ClInclude Include="TGen.h" />
     <ClInclude Include="TPopulation.h" />
   </ItemGroup>

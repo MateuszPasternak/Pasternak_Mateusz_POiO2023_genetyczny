@@ -16,6 +16,7 @@ public:
 	TGen(double min, double max, double step, double value, std::string name, std::string opis = "Gen");
 
 	void set_value(double value);
+	void set_value(double value, int id);
 	void info();
 	int get_id(std::vector<double> values, double value);
 	int get_val_id();

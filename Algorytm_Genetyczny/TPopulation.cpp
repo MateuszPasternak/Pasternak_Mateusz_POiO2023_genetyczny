@@ -18,7 +18,7 @@ TPopulation::TPopulation(int cand_num, bool rand)
 		}
 		else
 		{
-			cand_num = 0;
+			this->candidates.push_back(cand);
 		}
 	}
 
@@ -64,9 +64,9 @@ void TPopulation::info()
 	std::cout << "##########################\n";
 }
 
-void TPopulation::add_Candidate(TCandidate candidateAdded)
+void TPopulation::add_Candidate(TCandidate candidateAdded, int id)
 {
-	this->candidates.push_back(candidateAdded);
+	this->candidates.at(id) = candidateAdded;
 }
 
 void TPopulation::generate_restOfCandidates()

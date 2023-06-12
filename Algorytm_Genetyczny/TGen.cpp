@@ -68,6 +68,12 @@ void TGen::set_value(double value)
 
 }
 
+void TGen::set_value(double value, int id)
+{
+	this->val = value;
+	this->_id = id;
+}
+
 void TGen::info()
 {
 	std::cout << "\n\n###########################\n" <<

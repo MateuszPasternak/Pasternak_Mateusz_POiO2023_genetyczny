@@ -6,13 +6,14 @@
 
 class TCandidate
 {
+protected:
 	double ocena;
 	std::vector<TGen> genotyp;
 	double crossPossibiltyRate;
 
 public:
 	TCandidate();
-	void rand_gens_val();
+	virtual void rand_gens_val();
 	void set_gens(TCandidate Parent1, TCandidate Parent2, int crossOverPoint);
 	void rate();
 	void info();
